@@ -3,76 +3,113 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Threat Feed | Darkline</title>
+  <title>Threat Feed | Shadow Leaks</title>
   <style>
     body {
-      background-color: #000;
-      color: #33ff33;
-      font-family: "Courier New", monospace;
+      background-color: #0a0a0a;
+      color: #e40000;
+      font-family: 'Courier New', monospace;
       margin: 0;
-      padding: 2rem;
+      padding: 3rem;
     }
     h1 {
-      color: #0f0;
-      font-size: 2rem;
-      border-bottom: 1px solid #0f0;
-      padding-bottom: 0.5rem;
+      color: #fff;
+      text-align: center;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      border-bottom: 2px solid #e40000;
+      padding-bottom: 1rem;
+      margin-bottom: 3rem;
     }
     .entry {
-      margin-bottom: 1.5rem;
-      border-left: 2px solid #0f0;
-      padding-left: 1rem;
+      border: 1px solid #e40000;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      background-color: #111;
+    }
+    .entry h2 {
+      font-size: 1.4rem;
+      margin-top: 0;
+      color: #ff4444;
+    }
+    .meta {
+      font-size: 0.85rem;
+      color: #999;
+      margin-bottom: 0.8rem;
     }
     .tag {
-      background: #111;
-      padding: 2px 6px;
+      background: #200;
+      padding: 3px 8px;
       margin-right: 6px;
-      border: 1px solid #33ff33;
+      border: 1px solid #e40000;
+      font-size: 0.7rem;
       display: inline-block;
+      color: #e40000;
+    }
+    code {
+      color: #ccc;
+      background-color: #222;
+      padding: 3px 6px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 5rem;
       font-size: 0.8rem;
-    }
-    a {
-      color: #0ff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .timestamp {
-      font-size: 0.8rem;
-      color: #999;
+      color: #444;
     }
   </style>
 </head>
 <body>
-  <h1>☠ Threat Feed — s3curetheweb Intel ☠</h1>
+  <h1>Shadow Leaks – Live Threat Dump</h1>
 
   <div class="entry">
-    <div class="timestamp">📅 2025-08-01 13:22 UTC</div>
-    <div><strong>Target:</strong> Okta</div>
-    <div><strong>URL:</strong> <code>hxxps://googleform-byvaibhav[.]netlify[.]app</code></div>
-    <div><strong>Status:</strong> 200 (active)</div>
-    <div><strong>Reported to:</strong> Google Safe Browsing</div>
+    <h2>🟢 Google Form Phish — Netlify</h2>
+    <div class="meta">Posted: 12:25 AM · 2 Aug 2025</div>
+    <div><strong>Target:</strong> Google</div>
+    <div><strong>Status:</strong> <span style="color: #0f0;">ACTIVE</span></div>
+    <div><strong>Domain:</strong> <code>hxxps://googleform-byvaibhav[.]netlify[.]app</code></div>
+    <div><strong>Reported:</strong> Google Safe Browsing, Criminal IP</div>
     <div>
       <span class="tag">#phishing</span>
-      <span class="tag">#okta</span>
-      <span class="tag">.click</span>
+      <span class="tag">#google</span>
+      <span class="tag">.netlify.app</span>
     </div>
   </div>
 
   <div class="entry">
-    <div class="timestamp">📅 2025-08-01 10:01 UTC</div>
-    <div><strong>Target:</strong> testing</div>
-    <div><strong>URL:</strong> <code>testing</code></div>
-    <div><strong>Status:</strong> Active</div>
-    <div><strong>Reported to:</strong> PhishTank, CertTeam</div>
+    <h2>🔐 Facebook Spoof — Password Protected</h2>
+    <div class="meta">Posted: 11:46 PM · 1 Aug 2025</div>
+    <div><strong>Target:</strong> Facebook</div>
+    <div><strong>Status:</strong> <span style="color: #ffaa00;">LOCKED</span></div>
+    <div><strong>Domain:</strong> <code>hxxps://tranquil-jalebi-2c4377[.]netlify[.]app/</code></div>
+    <div><strong>Reported:</strong>Criminal IP</div>
     <div>
-      <span class="tag">#microsoft</span>
-      <span class="tag">#phishing</span>
-      <span class="tag">.top</span>
+      <span class="tag">#facebook</span>
+      <span class="tag">#password-protected</span>
+      <span class="tag">.netlify.app</span>
     </div>
   </div>
 
-  <!-- Add more entries below as needed -->
+  <div class="entry">
+    <h2>🛑 Facebook Spoofs — Weebly</h2>
+    <div class="meta">First Seen: 10:38 PM · 31 Jul 2025 | Offline: 12:08 PM · 1 Aug 2025</div>
+    <div><strong>Target:</strong> Facebook</div>
+    <div><strong>Status:</strong> <span style="color: #888;">INACTIVE</span></div>
+    <div><strong>Domains:</strong>
+      <code>auth-facebook-my-en[.]weebly.com</code><br />
+      <code>auth-facebook-zh-hk[.]weebly[.]com</code>
+    </div>
+    <div><strong>Reported:</strong> OpenPhish</div>
+    <div>
+      <span class="tag">#facebook</span>
+      <span class="tag">#spoof</span>
+      <span class="tag">#weebly</span>
+    </div>
+  </div>
+
+  <footer>
+    ⚠️ This page is for cybersecurity monitoring and awareness only.  
+    Unauthorized use may be a criminal offense.
+  </footer>
 </body>
 </html>
