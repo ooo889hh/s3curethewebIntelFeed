@@ -3,21 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>C:\>ACCESS_GRANTED</title>
+  <title>C:\>_LIVE_FEED</title>
   <style>
-    /* * SYSTEM-WIDE AESTHETICS.
-     * EXECUTING PRIMARY DIRECTIVES. 
+    /*
+     * INITIALIZING INTERFACE:
+     * CONSOLE MODE.
      */
     body {
-      background-color: #000;
+      background-color: #111;
       color: #0f0;
-      font-family: 'Consolas', 'Courier New', monospace;
+      font-family: 'Fira Code', 'Consolas', 'Courier New', monospace;
       margin: 0;
       padding: 0;
     }
 
-    /* * INITIALIZING LOADING PROTOCOL.
-     * DISPLAYING SYSTEM STATUS. 
+    /*
+     * LOADING PROTOCOL:
+     * SECURE HANDSHAKE.
      */
     .loading-screen {
       position: fixed;
@@ -25,128 +27,138 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: #000;
+      background-color: #111;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       z-index: 1000;
       transition: opacity 1s ease-in-out;
-      border: 5px solid #ff0000;
-      box-shadow: 0 0 15px #ff0000;
-      padding: 3rem;
-      box-sizing: border-box;
     }
     
-    .loading-line {
-      width: 100%;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 3px solid #0f0;
+    .spinner {
+      border: 4px solid #333;
+      border-top: 4px solid #0f0;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+
+    .loading-text {
       font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-      animation: typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite;
+      color: #fff;
+      margin-top: 20px;
+      opacity: 0;
+      animation: fade-in-out 3s ease-in-out infinite;
     }
 
-    .loading-percentage {
-      color: #0f0;
-      font-size: 4rem;
-      font-weight: bold;
-      text-shadow: 0 0 5px #0f0;
-    }
-
-    /* * THREAT FEED INTERFACE.
-     * EXECUTING DISPLAY PROTOCOL. 
+    /*
+     * MAIN INTERFACE:
+     * THREAT FEED.
      */
     .content {
       opacity: 0;
-      transition: opacity 2s ease-in-out;
-      padding: 3rem;
+      transition: opacity 1s ease-in-out;
+      padding: 2rem;
     }
 
     .prompt {
-      color: #ff0000;
-      font-size: 2.5rem;
-      text-shadow: 0 0 5px #ff0000;
-      margin-bottom: 2rem;
+      color: #0f0;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
     }
     
-    .prompt span {
-      color: #0f0;
+    .prompt::after {
+      content: '|';
+      color: #fff;
+      animation: blink-caret 0.75s step-end infinite;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 2rem;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
     }
 
     .entry {
-      border: 1px solid #ff0000;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      background-color: rgba(255, 0, 0, 0.1);
-      box-shadow: 0 0 5px #ff0000;
+      border: 1px solid #333;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background-color: #1a1a1a;
+      box-shadow: 0 0 5px #0f0;
       transition: box-shadow 0.3s ease-in-out;
     }
     
     .entry:hover {
-        box-shadow: 0 0 15px #ff0000;
+      box-shadow: 0 0 10px #0f0;
     }
 
     .entry h2 {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       margin-top: 0;
-      color: #ffaa00;
+      color: #0f0;
     }
 
     .meta {
-      font-size: 0.85rem;
-      color: #999;
-      margin-bottom: 0.8rem;
+      font-size: 0.8rem;
+      color: #777;
+      margin-bottom: 0.5rem;
     }
 
     .tag {
-      background: #330000;
-      padding: 3px 8px;
-      margin-right: 6px;
-      border: 1px solid #ff0000;
-      font-size: 0.7rem;
+      background: #222;
+      padding: 2px 6px;
+      margin-right: 4px;
+      border: 1px solid #333;
+      font-size: 0.6rem;
       display: inline-block;
-      color: #ff0000;
+      color: #0f0;
     }
 
     code {
-      color: #0f0;
+      color: #ffaa00;
       background-color: #222;
-      padding: 3px 6px;
-      border: 1px solid #0f0;
-      text-shadow: 0 0 3px #0f0;
+      padding: 2px 4px;
+      border: 1px solid #333;
     }
-
+    
     footer {
-      text-align: center;
-      margin-top: 5rem;
-      font-size: 0.8rem;
+      text-align: left;
+      margin-top: 3rem;
+      font-size: 0.7rem;
       color: #444;
-      text-shadow: none;
     }
 
-    /* * ANIMATION PROTOCOLS.
+    /*
+     * ANIMATIONS.
      */
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
+    @keyframes fade-in-out {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
     
     @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: #0f0 }
+      from, to { opacity: 0 }
+      50% { opacity: 1 }
     }
   </style>
 </head>
 <body>
   <div class="loading-screen" id="loading-screen">
-    <div class="loading-line">INITIATING DATA RETRIEVAL...</div>
-    <div class="loading-percentage" id="loading-percentage">0%</div>
+    <div class="spinner"></div>
+    <div class="loading-text" id="loading-text">CONNECTION ESTABLISHED...</div>
   </div>
 
   <div class="content" id="content">
-    <div class="prompt">C:\> <span>ACCESS_GRANTED</span></div>
+    <div class="prompt">C:\>_threat_feed.exe</div>
+    <h1>s3curetheweb – Threat Feed</h1>
     <div class="entry">
       <h2>🟢 Google Form Phish — Netlify</h2>
       <div class="meta">Posted: 12:25 AM · 2 Aug 2025</div>
@@ -184,12 +196,6 @@
         <code>auth-facebook-my-en[.]weebly.com</code><br />
         <code>auth-facebook-zh-hk[.]weebly[.]com</code>
       </div>
-      <div><strong>Reported:</strong> OpenPhish</div>
-      <div>
-        <span class="tag">#facebook</span>
-        <span class="tag">#spoof</span>
-        <span class="tag">#weebly</span>
-      </div>
     </div>
     
     <div class="entry">
@@ -205,10 +211,25 @@
         <span class="tag">.netlify.app</span>
       </div>
     </div>
+
+        <div class="entry">
+      <h2>🛑 Phishing hosted on Google</h2>
+      <div class="meta">First seen: 8:05 pm · 10 Jul 2025
+ | Offline: 11 July 2025</div>
+      <div><strong>Target:</strong> Google</div>
+      <div><strong>Status:</strong> <span style="color: #888;">INACTIVE</span></div>
+      <div><strong>Domains:</strong>
+        <code>hxxps://jxfnhf[.]blogspot[.]com/pqu</code><br />
+         <div>
+        <span class="tag">#Google</span>
+        <span class="tag">#phishing</span>
+        <span class="tag">.blogspot.com</span>
+      </div>
+    </div>
     
     <footer>
-      > DISCLAMER_ID:0x41.25.75_STATUS:CRITICAL<br>
-      WARNING: This interface is for cybersecurity monitoring. UNAUTHORIZED access is strictly prohibited and may result in legal action.
+      > All data and research are maintained by a single operator. This feed is hosted on GitHub for public access (Research by: <a href="https://x.com/s3curetheweb">https://x.com/s3curetheweb</a>).<br>
+      > DISCLAIMER: For educational and cybersecurity awareness purposes only
     </footer>
   </div>
 
@@ -216,33 +237,21 @@
     window.addEventListener('load', () => {
       const loadingScreen = document.getElementById('loading-screen');
       const content = document.getElementById('content');
-      const loadingPercentage = document.getElementById('loading-percentage');
-      const loadingLine = document.querySelector('.loading-line');
+      const loadingText = document.getElementById('loading-text');
 
-      // Hide the initial typing animation for the percentage counter
-      loadingLine.style.animation = 'none';
+      // First, fade in the text under the spinner
+      loadingText.style.opacity = '1';
+      loadingText.style.animation = 'none';
+
+      // After a brief pause, transition to the main content
       setTimeout(() => {
-        loadingLine.style.animation = 'typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite';
-      }, 10);
-
-      let percentage = 0;
-      const interval = setInterval(() => {
-        percentage += 1;
-        loadingPercentage.textContent = percentage + '%';
-        if (percentage >= 100) {
-          clearInterval(interval);
-          loadingLine.style.borderRight = 'none'; // Remove the blinking cursor
-          
-          setTimeout(() => {
-            loadingScreen.style.opacity = '0';
-            content.style.opacity = '1';
-            
-            setTimeout(() => {
-              loadingScreen.style.display = 'none';
-            }, 1000); 
-          }, 500); 
-        }
-      }, 25); // Adjusted speed for a more dramatic effect
+        loadingScreen.style.opacity = '0';
+        content.style.opacity = '1';
+        
+        setTimeout(() => {
+          loadingScreen.style.display = 'none';
+        }, 1000); // Wait for the loading screen fade-out
+      }, 2000); // Time to display the spinner and text
     });
   </script>
 </body>
