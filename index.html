@@ -3,127 +3,247 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Threat Feed | Shadow Leaks</title>
+  <title>C:\>ACCESS_GRANTED</title>
   <style>
+    /* * SYSTEM-WIDE AESTHETICS.
+     * EXECUTING PRIMARY DIRECTIVES. 
+     */
     body {
-      background-color: #0a0a0a;
-      color: #e40000;
-      font-family: 'Courier New', monospace;
+      background-color: #000;
+      color: #0f0;
+      font-family: 'Consolas', 'Courier New', monospace;
       margin: 0;
+      padding: 0;
+    }
+
+    /* * INITIALIZING LOADING PROTOCOL.
+     * DISPLAYING SYSTEM STATUS. 
+     */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      transition: opacity 1s ease-in-out;
+      border: 5px solid #ff0000;
+      box-shadow: 0 0 15px #ff0000;
+      padding: 3rem;
+      box-sizing: border-box;
+    }
+    
+    .loading-line {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #0f0;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      animation: typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    }
+
+    .loading-percentage {
+      color: #0f0;
+      font-size: 4rem;
+      font-weight: bold;
+      text-shadow: 0 0 5px #0f0;
+    }
+
+    /* * THREAT FEED INTERFACE.
+     * EXECUTING DISPLAY PROTOCOL. 
+     */
+    .content {
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
       padding: 3rem;
     }
-    h1 {
-      color: #fff;
-      text-align: center;
+
+    .prompt {
+      color: #ff0000;
       font-size: 2.5rem;
-      text-transform: uppercase;
-      border-bottom: 2px solid #e40000;
-      padding-bottom: 1rem;
-      margin-bottom: 3rem;
+      text-shadow: 0 0 5px #ff0000;
+      margin-bottom: 2rem;
     }
+    
+    .prompt span {
+      color: #0f0;
+    }
+
     .entry {
-      border: 1px solid #e40000;
+      border: 1px solid #ff0000;
       padding: 1.5rem;
       margin-bottom: 2rem;
-      background-color: #111;
+      background-color: rgba(255, 0, 0, 0.1);
+      box-shadow: 0 0 5px #ff0000;
+      transition: box-shadow 0.3s ease-in-out;
     }
+    
+    .entry:hover {
+        box-shadow: 0 0 15px #ff0000;
+    }
+
     .entry h2 {
       font-size: 1.4rem;
       margin-top: 0;
-      color: #ff4444;
+      color: #ffaa00;
     }
+
     .meta {
       font-size: 0.85rem;
       color: #999;
       margin-bottom: 0.8rem;
     }
+
     .tag {
-      background: #200;
+      background: #330000;
       padding: 3px 8px;
       margin-right: 6px;
-      border: 1px solid #e40000;
+      border: 1px solid #ff0000;
       font-size: 0.7rem;
       display: inline-block;
-      color: #e40000;
+      color: #ff0000;
     }
+
     code {
-      color: #ccc;
+      color: #0f0;
       background-color: #222;
       padding: 3px 6px;
+      border: 1px solid #0f0;
+      text-shadow: 0 0 3px #0f0;
     }
+
     footer {
       text-align: center;
       margin-top: 5rem;
       font-size: 0.8rem;
       color: #444;
+      text-shadow: none;
+    }
+
+    /* * ANIMATION PROTOCOLS.
+     */
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #0f0 }
     }
   </style>
 </head>
 <body>
-  <h1>Shadow Leaks – Live Threat Dump</h1>
-
-  <div class="entry">
-    <h2>🟢 Google Form Phish — Netlify</h2>
-    <div class="meta">Posted: 12:25 AM · 2 Aug 2025</div>
-    <div><strong>Target:</strong> Google</div>
-    <div><strong>Status:</strong> <span style="color: #0f0;">ACTIVE</span></div>
-    <div><strong>Domain:</strong> <code>hxxps://googleform-byvaibhav[.]netlify[.]app</code></div>
-    <div><strong>Reported:</strong> Google Safe Browsing, Criminal IP</div>
-    <div>
-      <span class="tag">#phishing</span>
-      <span class="tag">#google</span>
-      <span class="tag">.netlify.app</span>
-    </div>
+  <div class="loading-screen" id="loading-screen">
+    <div class="loading-line">INITIATING DATA RETRIEVAL...</div>
+    <div class="loading-percentage" id="loading-percentage">0%</div>
   </div>
 
-  <div class="entry">
-    <h2>🔐 Facebook Spoof — Password Protected</h2>
-    <div class="meta">Posted: 11:46 PM · 1 Aug 2025</div>
-    <div><strong>Target:</strong> Facebook</div>
-    <div><strong>Status:</strong> <span style="color: #ffaa00;">LOCKED</span></div>
-    <div><strong>Domain:</strong> <code>hxxps://tranquil-jalebi-2c4377[.]netlify[.]app/</code></div>
-    <div><strong>Reported:</strong>Criminal IP</div>
-    <div>
-      <span class="tag">#facebook</span>
-      <span class="tag">#password-protected</span>
-      <span class="tag">.netlify.app</span>
+  <div class="content" id="content">
+    <div class="prompt">C:\> <span>ACCESS_GRANTED</span></div>
+    <div class="entry">
+      <h2>🟢 Google Form Phish — Netlify</h2>
+      <div class="meta">Posted: 12:25 AM · 2 Aug 2025</div>
+      <div><strong>Target:</strong> Google</div>
+      <div><strong>Status:</strong> <span style="color: #0f0;">ACTIVE</span></div>
+      <div><strong>Domain:</strong> <code>hxxps://googleform-byvaibhav[.]netlify[.]app</code></div>
+      <div><strong>Reported:</strong> Google Safe Browse, Criminal IP</div>
+      <div>
+        <span class="tag">#phishing</span>
+        <span class="tag">#google</span>
+        <span class="tag">.netlify.app</span>
+      </div>
     </div>
+    
+    <div class="entry">
+      <h2>🔐 Facebook Spoof — Password Protected</h2>
+      <div class="meta">Posted: 11:46 PM · 1 Aug 2025</div>
+      <div><strong>Target:</strong> Facebook</div>
+      <div><strong>Status:</strong> <span style="color: #ffaa00;">LOCKED</span></div>
+      <div><strong>Domain:</strong> <code>hxxps://tranquil-jalebi-2c4377[.]netlify[.]app/</code></div>
+      <div><strong>Reported:</strong>Criminal IP</div>
+      <div>
+        <span class="tag">#facebook</span>
+        <span class="tag">#password-protected</span>
+        <span class="tag">.netlify.app</span>
+      </div>
+    </div>
+    
+    <div class="entry">
+      <h2>🛑 Facebook Spoofs — Weebly</h2>
+      <div class="meta">First Seen: 10:38 PM · 31 Jul 2025 | Offline: 12:08 PM · 1 Aug 2025</div>
+      <div><strong>Target:</strong> Facebook</div>
+      <div><strong>Status:</strong> <span style="color: #888;">INACTIVE</span></div>
+      <div><strong>Domains:</strong>
+        <code>auth-facebook-my-en[.]weebly.com</code><br />
+        <code>auth-facebook-zh-hk[.]weebly[.]com</code>
+      </div>
+      <div><strong>Reported:</strong> OpenPhish</div>
+      <div>
+        <span class="tag">#facebook</span>
+        <span class="tag">#spoof</span>
+        <span class="tag">#weebly</span>
+      </div>
+    </div>
+    
+    <div class="entry">
+      <h2>🔐 Capital One</h2>
+      <div class="meta">Posted: 11:46 PM · 1 Aug 2025</div>
+      <div><strong>Target:</strong> Capital One</div>
+      <div><strong>Status:</strong> <span style="color: #0f0;">ACTIVE</span></div>
+      <div><strong>Domain:</strong> <code>hxxps://capital-one-sign-in-form[.]netlify[.]app</code></div>
+      <div><strong>Reported:</strong>Criminal IP</div>
+      <div>
+        <span class="tag">#Capital One</span>
+        <span class="tag">#phishing</span>
+        <span class="tag">.netlify.app</span>
+      </div>
+    </div>
+    
+    <footer>
+      > DISCLAMER_ID:0x41.25.75_STATUS:CRITICAL<br>
+      WARNING: This interface is for cybersecurity monitoring. UNAUTHORIZED access is strictly prohibited and may result in legal action.
+    </footer>
   </div>
 
-  <div class="entry">
-    <h2>🛑 Facebook Spoofs — Weebly</h2>
-    <div class="meta">First Seen: 10:38 PM · 31 Jul 2025 | Offline: 12:08 PM · 1 Aug 2025</div>
-    <div><strong>Target:</strong> Facebook</div>
-    <div><strong>Status:</strong> <span style="color: #888;">INACTIVE</span></div>
-    <div><strong>Domains:</strong>
-      <code>auth-facebook-my-en[.]weebly.com</code><br />
-      <code>auth-facebook-zh-hk[.]weebly[.]com</code>
-    </div>
-    <div><strong>Reported:</strong> OpenPhish</div>
-    <div>
-      <span class="tag">#facebook</span>
-      <span class="tag">#spoof</span>
-      <span class="tag">#weebly</span>
-    </div>
-  </div>
+  <script>
+    window.addEventListener('load', () => {
+      const loadingScreen = document.getElementById('loading-screen');
+      const content = document.getElementById('content');
+      const loadingPercentage = document.getElementById('loading-percentage');
+      const loadingLine = document.querySelector('.loading-line');
 
-   <div class="entry">
-    <h2>🔐 Capital One</h2>
-    <div class="meta">Posted: 11:46 PM · 1 Aug 2025</div>
-    <div><strong>Target:</strong> Capital One</div>
-    <div><strong>Status:</strong> <span style="color: #0f0;">ACTIVE</span></div>
-    <div><strong>Domain:</strong> <code>hxxps://capital-one-sign-in-form[.]netlify[.]app</code></div>
-    <div><strong>Reported:</strong>Criminal IP</div>
-    <div>
-      <span class="tag">#Capital One</span>
-      <span class="tag">#phishing</span>
-      <span class="tag">.netlify.app</span>
-    </div>
-  </div>
+      // Hide the initial typing animation for the percentage counter
+      loadingLine.style.animation = 'none';
+      setTimeout(() => {
+        loadingLine.style.animation = 'typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite';
+      }, 10);
 
-  <footer>
-    ⚠️ This page is for cybersecurity monitoring and awareness only.  
-    Unauthorized use may be a criminal offense.
-  </footer>
+      let percentage = 0;
+      const interval = setInterval(() => {
+        percentage += 1;
+        loadingPercentage.textContent = percentage + '%';
+        if (percentage >= 100) {
+          clearInterval(interval);
+          loadingLine.style.borderRight = 'none'; // Remove the blinking cursor
+          
+          setTimeout(() => {
+            loadingScreen.style.opacity = '0';
+            content.style.opacity = '1';
+            
+            setTimeout(() => {
+              loadingScreen.style.display = 'none';
+            }, 1000); 
+          }, 500); 
+        }
+      }, 25); // Adjusted speed for a more dramatic effect
+    });
+  </script>
 </body>
 </html>
